@@ -144,7 +144,7 @@ namespace STBLBuilder {
 
 				Tools.WriteXML(sourceInfoFilePath, new SourceInfo() {
 					Name = file.IdentifiersName,
-					TypeID = 570775514,
+					TypeID = 2113017500,
 					GroupID = file.IdentifiersGroup,
 					InstanceID = file.IdentifiersInstance
 				});
