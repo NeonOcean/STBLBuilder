@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<STBLXMLFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<FallbackLanguage>0</FallbackLanguage>
+	<STBLGroup>0</STBLGroup>
+	<STBLInstance>12721610284325963416</STBLInstance><!-- Group and instance values are not built into these files. These values exist for cases were STBL Builder is run with the argument '-p', as to build source info files for use by NeonOcean's Package Builder tool. -->
+	<STBLName>STBL_XML_Example.{0:Underscored}</STBLName><!-- This is used as the output file name, the formatting placeholder is replaced with the language's name in English. Valid formatting placeholders are {0}, {0:Normal}, {0:Spaced}, {0:Underscored}, {0:Hyphenated}.-->
+	<BuildIdentifiers>true</BuildIdentifiers><!-- Whether or not we should build identifiers tuning files. -->
+	<IdentifiersGroup>0</IdentifiersGroup>
+	<IdentifiersInstance>12483077106629208238</IdentifiersInstance>
+	<IdentifiersName>STBL_XML_Example_Identifiers</IdentifiersName><!-- The output file name of the identifiers tuning file -->
+	<Entries>
+		<STBLXMLEntry>
+			<Key>2659071308</Key><!-- The STBL entry's key, this can't be less than 0 or more than 4294967295. -->
+			<Identifier>NeonOcean.Example.Example_Text</Identifier><!-- STBL identifiers are supported in toolkit mods such as NeonOcean's Main. If you don't want to create identifiers tuning files you could turn it off the feature with the 'BuildIdentifiers' value. Periods are used to separate the identifier into segments for faster searching. -->
+			<English>Example</English>
+			<Finnish>esimerkki</Finnish>
+		</STBLXMLEntry>
+		<STBLXMLEntry>
+			<Key>2872124385</Key>
+			<Identifier>NeonOcean.Example.Second_Example_Text</Identifier>
+			<English>Another stbl entry</English>
+		</STBLXMLEntry>
+	</Entries>
+</STBLXMLFile>
