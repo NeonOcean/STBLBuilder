@@ -123,7 +123,7 @@ namespace STBLBuilder {
 			string identifiersFilePath = Path.Combine(buildPath, identifiersFileName);
 
 			string identifiersText = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
-			identifiersText += "<I n=\"" + SecurityElement.Escape(file.IdentifiersName) + "\" s=\"" + file.IdentifiersInstance.ToString("0") + "\" i=\"snippet\" m=\"snippets\" c=\"NeonoceanGlobalLanguageIdentifiers\">\n";
+			identifiersText += "<I n=\"" + SecurityElement.Escape(file.IdentifiersName) + "\" s=\"" + file.IdentifiersInstance.ToString("0") + "\" i=\"snippet\" m=\"snippets\" c=\"NeonoceanS4GlobalLanguageIdentifiers\">\n";
 			identifiersText += "\t<L n=\"value\">\n";
 
 			for(int entryIndex = 0; entryIndex < file.Entries.Count; entryIndex++) {
