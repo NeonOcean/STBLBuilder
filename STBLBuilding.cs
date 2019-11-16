@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Security;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace STBLBuilder {
@@ -36,15 +37,21 @@ namespace STBLBuilder {
 				throw new FileNotFoundException("File does not exist.", sourcePath);
 			}
 
-			STBLXMLFile file = null;
+			STBLXMLFile source = null;
 
 			try {
-				file = (STBLXMLFile)Tools.ReadXML<STBLXMLFile>(sourcePath);
+				string sourceText = File.ReadAllText(sourcePath);
+				sourceText = Regex.Replace(sourceText, @"\r\n|\r", "\n");
+
+				XmlSerializer sourceSerializer = new XmlSerializer(typeof(STBLXMLFile));
+				using(StringReader sourceReader = new StringReader(sourceText)) {
+					source = (STBLXMLFile)sourceSerializer.Deserialize(sourceReader);
+				}
 			} catch(Exception e) {
 				throw new Exception("Failed to read language source file.", e);
 			}
 
-			return file;
+			return source;
 		}
 
 		public static void BuildSTBL (STBLXMLFile file, string buildPath) {
@@ -96,7 +103,7 @@ namespace STBLBuilder {
 					}
 				}
 
-				if(STBLBuilder.Entry.BuildSourceInfoFile) {
+				if(Entry.BuildSourceInfoFile) {
 					string sourceInfoFilePath = stblFilePath + "." + SourceInfoFileExtension;
 
 					string languageInstanceHexadecimal = ((int)language).ToString("x2") + file.STBLInstance.ToString("x").Substring(2);
@@ -139,7 +146,7 @@ namespace STBLBuilder {
 				writer.Write(identifiersText);
 			}
 
-			if(STBLBuilder.Entry.BuildSourceInfoFile) {
+			if(Entry.BuildSourceInfoFile) {
 				string sourceInfoFilePath = identifiersFilePath + "." + SourceInfoFileExtension;
 
 				Tools.WriteXML(sourceInfoFilePath, new SourceInfo() {
